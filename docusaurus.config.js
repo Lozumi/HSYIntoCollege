@@ -66,9 +66,9 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: '专业指南',
+        title: '高校指南',
         logo: {
-          alt: '华师一高校专业指南',
+          alt: '华师一高校指南',
           src: 'img/logo.png',
         },
         items: [
@@ -77,6 +77,18 @@ const config = {
             sidebarId: 'tutorialSidebar',
             position: 'left',
             label: '文档',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'majorGuide',
+            position: 'left',
+            label: '专业指南',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'lifeGuide',
+            position: 'left',
+            label: '生活指南',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
