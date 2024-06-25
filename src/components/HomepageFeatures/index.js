@@ -4,32 +4,29 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
+    title: '生活攻略大全',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        不论是宿舍生活小窍门，还是校园美食导航，这里汇集了华师一毕业生的实战经验，让你轻松应对大学日常。
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: '专业导航灯塔',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        深度剖析各学科领域，提供专业的选择建议，结合就业前景和个人兴趣，助你规划理想未来。
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: '校友智慧共享',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        由屈子炎学长发起，华师一学生群联盟助力，连接广泛的华师一毕业生网络，分享前辈的学习策略、生活心得，让你的大学之路不再孤单。
       </>
     ),
   },
