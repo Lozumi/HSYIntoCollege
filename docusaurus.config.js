@@ -60,6 +60,14 @@ const config = {
     ],
   ],
 
+  plugins:[
+    // require.resolve("@cmfcmf/docusaurus-search-local"),
+  ],
+
+  themes: [
+    '@easyops-cn/docusaurus-search-local',
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -96,6 +104,10 @@ const config = {
             label: 'GitHub',
             position: 'right',
           },
+          {
+            type:'search',
+            position:'right',
+          }
         ],
       },
       footer: {
@@ -144,6 +156,7 @@ const config = {
         darkTheme: prismThemes.dracula,
       },
     }),
+    
 };
 
 export default config;
