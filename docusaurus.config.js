@@ -149,7 +149,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} 华师一19级年级群 出品|刘黎可 技术|屈子炎 统筹`,
       },
       prism: {
         theme: prismThemes.github,
