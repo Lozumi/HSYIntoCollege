@@ -1,5 +1,6 @@
 # Dependencies
 /node_modules
+/package-lock.json
 
 # Production
 /build
@@ -7,6 +8,7 @@
 # Generated files
 .docusaurus
 .cache-loader
+/static/search-index.json
 
 # Misc
 .DS_Store
@@ -14,6 +16,7 @@
 .env.development.local
 .env.test.local
 .env.production.local
+chat-backend/.env
 
 npm-debug.log*
 yarn-debug.log*

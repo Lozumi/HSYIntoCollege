@@ -5,11 +5,14 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "build": "docusaurus build",
+    "build": "node patches/patch-vetradocs.mjs && docusaurus build && node node_modules/vetradocs-docusaurus/bin/build-index.mjs && node -e \"require('fs').copyFileSync('static/search-index.json','build/rag-index.json')\"",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
+    "backend": "cd chat-backend && node server.js",
+    "dev": "docusaurus start --host 0.0.0.0",
+    "postinstall": "node patches/patch-vetradocs.mjs",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids"
   },
@@ -18,10 +21,14 @@
     "@docusaurus/preset-classic": "^3.8.1",
     "@easyops-cn/docusaurus-search-local": "^0.50.0",
     "@mdx-js/react": "^3.0.0",
+    "buffer": "^6.0.3",
     "clsx": "^2.0.0",
     "prism-react-renderer": "^2.3.0",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "stream-browserify": "^3.0.0",
+    "vetradocs-docusaurus": "^0.0.1",
+    "openai": "^4.29.2"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.4.0",

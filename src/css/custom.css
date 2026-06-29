@@ -28,3 +28,28 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+.vetradocs-message-content {
+  color: #1c1e21 !important;
+}
+.vetradocs-header-title {
+  color: #1c1e21 !important;
+}
+.vetradocs-input {
+  color: #1c1e21 !important;
+}
+.vetradocs-floating-input {
+  color: #1c1e21 !important;
+}
+
+[data-theme='dark'] .vetradocs-message-content,
+[data-theme='dark'] .vetradocs-header-title,
+[data-theme='dark'] .vetradocs-input,
+[data-theme='dark'] .vetradocs-floating-input {
+  color: #e3e3e3 !important;
+}
+
+[class*='dropdownMenu'] {
+  max-height: 70vh;
+  overflow-y: auto;
+}

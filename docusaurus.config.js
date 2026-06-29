@@ -5,6 +5,9 @@
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 import {themes as prismThemes} from 'prism-react-renderer';
+import webpack from 'webpack';
+import { createRequire } from 'module';
+const _require = createRequire(import.meta.url);
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -61,11 +64,57 @@ const config = {
   ],
 
   plugins:[
-    // require.resolve("@cmfcmf/docusaurus-search-local"),
+    function() {
+      return {
+        name: 'node-polyfill',
+        configureWebpack(config) {
+          config.plugins.push(
+            new webpack.NormalModuleReplacementPlugin(
+              /^stream$/,
+              _require.resolve('stream-browserify')
+            )
+          );
+          config.resolve = config.resolve || {};
+          config.resolve.fallback = {
+            ...config.resolve.fallback,
+            buffer: _require.resolve('buffer/'),
+          };
+        },
+      };
+    },
+    function() {
+      return {
+        name: 'dev-proxy',
+        configureWebpack(config, isServer) {
+          if (!isServer && !process.env.VERCEL) {
+            const target = process.env.CHAT_BACKEND_URL || 'http://localhost:3001';
+            config.devServer = config.devServer || {};
+            config.devServer.proxy = [
+              ...(config.devServer.proxy || []),
+              {
+                context: ['/api/chat'],
+                target,
+                changeOrigin: true,
+              },
+            ];
+          }
+        },
+      };
+    },
   ],
 
+  customFields: {
+    chatApiEndpoint: process.env.CHAT_API_ENDPOINT || '/api/chat',
+    chatIndexPath: process.env.CHAT_INDEX_PATH || '/rag-index.json',
+  },
+
   themes: [
-    '@easyops-cn/docusaurus-search-local',
+    ['@easyops-cn/docusaurus-search-local', {
+      language: ['zh'],
+      indexBlog: false,
+      searchResultLimits: 8,
+      searchResultContextMaxLength: 200,
+    }],
   ],
 
   themeConfig:
@@ -100,10 +149,11 @@ const config = {
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/Lozumi/HSYIntoCollege',
             label: 'GitHub',
             position: 'right',
           },
+
           {
             type:'search',
             position:'right',
@@ -156,7 +206,7 @@ const config = {
         darkTheme: prismThemes.dracula,
       },
     }),
-    
+
 };
 
 export default config;
